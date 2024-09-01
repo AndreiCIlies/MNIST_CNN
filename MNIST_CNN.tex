@@ -1,0 +1,152 @@
+\documentclass{article}
+
+\title{Convolutional Neural Network for MNIST Dataset \\ Hyperparameter Testing and Experiments on the Trained Models}
+\author{Andrei-Cristian Ilies}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introduction}
+\large{\hspace{1cm}MNIST is a dataset containing tiny grey-scale images, each showing a handwritten digit. The purpose of this project is to train a convolutional neural network to accurately predict the digits in the images from this dataset. Throughout this project, I tested different hyperparameters to better understand how they function in the network, and I observed the performance of all models during both training and testing on the images. In the final model, I added an additional convolutional layer to see how it would impact the network's performance.}
+
+\section*{Workspace and Project Components}
+\large{\hspace{1cm}I worked in Google Colab and trained a total of 16 models. Each model was saved to Google Drive after training and subsequently loaded and tested on randomly selected images from the test set.}
+
+\large{\hspace{0.5cm}The project includes two .ipynb files:}
+
+\begin{itemize}
+  \item The first file (MNIST\_Hyperparameter\_Testing.ipynb) includes the training of the 16 models and saving each model in a folder on Google Drive.
+  \item The second file (MNIST\_TrainedModels\_Experiments.ipynb) involves loading each model and testing it on 10 randomly selected images from the test set.
+\end{itemize}
+
+\section*{Hyperparameter Testing and Trained Models Experiments}
+\large{\hspace{1cm}In this section, I will present my observations for each model individually.}
+
+\subsection*{Model 1 - Learning Rate = 0.5}
+\begin{itemize}
+  \item The losses decrease very slowly, having higher values.
+  \item The accuracies are very low.
+  \item It has poor performance.
+  \item It incorrectly predicts the digit values in the images
+\end{itemize}
+
+\subsection*{Model 2 - Learning Rate = 0.1}
+\begin{itemize}
+  \item The losses decrease rapidly, with values very close to 0.
+  \item The accuracy increases and reaches high values.
+  \item It correctly predicts the digit values in the images
+\end{itemize}
+
+\subsection*{Model 3 - Learning Rate = 0.01}
+\begin{itemize}
+  \item The losses decrease rapidly, with values very close to 0.
+  \item The model with 0.1 learning rate has lower loss values than this model
+  \item The accuracy increases and reaches high values.
+  \item It correctly predicts the digit values in the images
+\end{itemize}
+
+\subsection*{Model 4 - Learning Rate = 0.001}
+\begin{itemize}
+  \item The losses have higher values at the start of the first epoch but decrease over time, not as rapidly as when lr = 0.01.
+  \item The accuracy does not start with very high percentages, but the values increase over time.
+  \item The final epoch has values similar to those of the first epoch when lr = 0.01.
+  \item It correctly predicts the digit values in the images
+\end{itemize}
+
+\subsection*{Model 5 - Learning Rate = 0.0001}
+\begin{itemize}
+  \item The losses decrease slowly, remain at high values, and do not approach 0.
+  \item The accuracy is very low.
+  \item The losses have higher values compared to when lr = 0.01.
+  \item It sometimes incorrectly predicts the digit values in the images.
+\end{itemize}
+
+\subsection*{Model 6 - ReLU Activation Function}
+\begin{itemize}
+  \item The losses decrease rapidly, with values very close to 0.
+  \item The accuracy increases and reaches high values.
+  \item It correctly predicts the digit values in the images.
+\end{itemize}
+
+\subsection*{Model 7 - Tanh Activation Function}
+\begin{itemize}
+  \item It has reasonable losses, but not as good as those from training with the ReLU activation function.
+  \item The accuracy starts at a lower value compared to the model using ReLU.
+  \item It correctly predicts the digit values in the images.
+\end{itemize}
+
+\subsection*{Model 8 - Sigmoid Activation Function}
+\begin{itemize}
+  \item The losses have values that are too high and do not approach 0 at all.
+  \item The accuracy values start very low but increase significantly from epoch 4, approaching ideal values.
+  \item No accuracy value surpasses those from training with the ReLU and Tanh activation functions, but the values increase substantially over time.
+  \item It sometimes incorrectly predicts the digit values in the images.
+\end{itemize}
+
+\subsection*{Model 9 - PReLU Activation Function}
+\begin{itemize}
+  \item The loss values are slightly lower compared to ReLU.
+  \item The accuracy is slightly higher compared to ReLU.
+  \item It performs better than the model with the ReLU activation function.
+  \item It correctly predicts the digit values in the images.
+\end{itemize}
+
+\subsection*{Model 10 - Batch Norm for each Convolutional Layer}
+\begin{itemize}
+  \item It has significantly better loss values from the first epoch compared to the model without batch normalization for each layer.
+  \item It starts with much better accuracy.
+  \item It performs better than the model without batch normalization.
+  \item It correctly predicts the digit values in the images.
+\end{itemize}
+
+\subsection*{Model 11 - 50\% Dropout on the First Fully Connected Layer}
+\begin{itemize}
+  \item It has low loss values.
+  \item It has high accuracy.
+  \item It correctly predicts the digit values in the images.
+\end{itemize}
+
+\subsection*{Model 12 - 10\% Dropout on the First Fully Connected Layer}
+\begin{itemize}
+  \item It starts with a higher loss, but better than dropout = 50\%.
+  \item The losses have better values compared to the model with dropout = 50\%.
+  \item It correctly predicts the digit values in the images.
+\end{itemize}
+
+\subsection*{Model 13 - 90\% Dropout on the First Fully Connected Layer}
+\begin{itemize}
+  \item It starts with very high loss values.
+  \item It does not perform as well as the models with lower dropout.
+  \item It sometimes incorrectly predicts the digit values in the images.
+\end{itemize}
+
+\subsection*{Model 14 - RMSProp Optimizer}
+\begin{itemize}
+  \item Very high loss values.
+  \item Low accuracy.
+  \item Incorrectly predicts the digit values in the images.
+\end{itemize}
+
+\subsection*{Model 15 - Adam Optimizer}
+\begin{itemize}
+  \item The loss values are reasonable.
+  \item The losses are higher compared to the model using SGD optimizer.
+  \item The accuracy is high but not as high as the model trained with SGD.
+  \item It performs better than RMSProp but not as well as SGD.
+  \item It correctly predicts the digit values in the images.
+\end{itemize}
+
+\subsection*{Model 16 - Adding a Third Convolutional Layer}
+\begin{itemize}
+  \item Initially, it has higher loss values compared to the model with 2 layers.
+  \item The loss values approach lower values over time.
+  \item The accuracy is lower than in the model with 2 layers.
+  \item Starting from the second epoch, the model has lower loss values.
+  \item The accuracy increases and reaches high values.
+  \item In the final epoch, it has better loss and accuracy values compared to the model with 2 layers.
+  \item It correctly predicts the digit values in the images.
+\end{itemize}
+
+\end{document}
