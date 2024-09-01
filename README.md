@@ -13,7 +13,7 @@ This project contains the following components:
 
 This repository also contains LaTeX documentation of the project and observations made on the saved models, available both in .pdf and .tex formats.
 
-## Technologies used
+## Technologies Used
 
 * PyTorch.
 * Matplotlib.
