@@ -15,5 +15,6 @@ This repository also contains LaTeX documentation of the project and observation
 
 ## Technologies Used
 
+* Python
 * PyTorch.
 * Matplotlib.
