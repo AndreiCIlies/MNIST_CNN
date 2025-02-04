@@ -1,4 +1,4 @@
-# MNIST_CNN
+# MNIST Convolutional Neural Network
 
 ## Introduction
 
